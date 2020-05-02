@@ -10,7 +10,7 @@
 
 + 安装Chrome或Firefox（需要把代码里的`driver = webdriver.Firefox()`注释取消掉改成注释`driver = webdriver.Chrome()`）
 
-+ 安装对应的webdriver：Chrome安装chromedriver，Firefox安装geckodriver，并配置好环境变量
++ 安装webdriver：Chrome安装chromedriver，Firefox安装geckodriver，并配置好环境变量。注意webdriver版本需要和浏览器版本对应。
 
 + 注意把代码里的`YourUsername`和`YourPassword`改成你自己的一卡通号和密码
 
@@ -20,8 +20,18 @@
 
 Linux配置定时任务：
 
-终端输入`crontab -e`，初次使用会让你选择一个编辑器编辑crontab文件，回车默认。
+1. 终端输入`crontab -e`，初次使用会让你选择一个编辑器编辑crontab文件，回车默认。
 
-在编辑界面最下面输入一行`3 0 * * * python3 __你放脚本文件的路径__ ` 即每天00:03执行一次脚本。`Ctrl + X` ，`Y` ，回车保存。
+2. 在编辑界面最下面输入一行`3 0 * * * python3 __你放脚本文件的路径__ ` 即每天00:03执行一次脚本。`Ctrl + X` ，`Y` ，回车保存。
 
-重启一下cron，终端输入`/etc/init.d/cron restart` 
+3. 重启一下cron，终端输入`/etc/init.d/cron restart` 
+
+
+
+**注：** 
+
+**1. 每日晨检体温默认输入36.7，可在代码里自行修改。** 
+
+**2. 欢迎提供反馈，但开发者不对使用脚本造成的任何后果负责。** 
+
+**3. nogui版针对没有图形界面的服务器系统进行了适配，优化了Chrome无图形界面运行配置，并提供更详细的命令行输出。** 
