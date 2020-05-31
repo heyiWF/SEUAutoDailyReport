@@ -10,6 +10,7 @@ from selenium import webdriver
 #chrome_options.add_argument('--no-sandbox')
 
 def main():
+    time.sleep(random.randint(0,300))
     mail_host="smtp.qq.com"
     mail_user="YourEmail@qq.com"
     mail_pass="YourMailToken"
