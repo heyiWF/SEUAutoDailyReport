@@ -1,7 +1,9 @@
 from selenium import webdriver
 import time
+import random
 
 def main():
+    time.sleep(random.randint(0,300))
     #driver = webdriver.Firefox()
     driver = webdriver.Chrome()
     #driver.maximize_window()
