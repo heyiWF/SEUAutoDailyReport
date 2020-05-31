@@ -4,8 +4,10 @@ chrome_options.add_argument('--headless')
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--no-sandbox')
 import time
+import random
 
 def main():
+    time.sleep(random.randint(0,300))
     #driver = webdriver.Firefox()
     driver = webdriver.Chrome(chrome_options=chrome_options)
     #driver = webdriver.Chrome()
