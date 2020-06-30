@@ -65,13 +65,14 @@ def main():
         message = MIMEText('Today\'s daily report has been successfully submitted. Temperature is: ' + str(temp), 'plain', 'utf-8')
         message['From'] = Header("AutoReportBot", 'utf-8')
         message['To'] =  Header("Master", 'utf-8')
-        subject = 'Daily Report Result'
+        subject = 'Daily Report Succeeded'
         message['Subject'] = Header(subject, 'utf-8')
-    except Exception:
-        message = MIMEText('Oops... Something went wrong. ', 'plain', 'utf-8')
+    except Exception as e:
+        msg = 'Oops... Something went wrong. \n' + str(e)
+        message = MIMEText(msg, 'plain', 'utf-8')
         message['From'] = Header("AutoReportBot", 'utf-8')
         message['To'] =  Header("Master", 'utf-8')
-        subject = 'Daily Report Result'
+        subject = 'Daily Report Failed'
         message['Subject'] = Header(subject, 'utf-8')
         print("Operation failed. Please try again. ")
     
