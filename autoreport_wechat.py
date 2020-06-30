@@ -64,7 +64,7 @@ def main():
         print("Operation failed. Please try again. ")
     
     # Send notification to WeChat
-    posturl = 'https://sc.ftqq.com/SCUkey.send'
+    posturl = 'https://sc.ftqq.com/SCKEY.send' # Replace 'SCKEY' with your own SCKEY
     d = {'text':subject, 'desp':msg}
     r = requests.post(posturl,data=d)
     print(r.text)
