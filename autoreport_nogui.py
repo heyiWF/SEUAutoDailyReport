@@ -51,7 +51,7 @@ def main():
         driver.find_element_by_xpath('//*[@id="save"]').click()
         print("Clicked \'save\'")
         time.sleep(3)
-        driver.find_element_by_xpath('/html/body/div[59]/div[1]/div[1]/div[2]/div[2]/a[1]').click()
+        driver.find_element_by_xpath('/html/body/div[60]/div[1]/div[1]/div[2]/div[2]/a[1]').click()
         print("Done!!")
     except Exception:
         print("Operation failed. Please try again. ")
