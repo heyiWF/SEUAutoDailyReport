@@ -40,7 +40,7 @@ jobs:
 
     # 安装Python模块
     - name: Install packages
-      run: sudo pip3 install requests selenium
+      run: sudo pip3 install requests selenium -H
       
     # 安装Chrome和chromedriver
     - name: Install Chrome
