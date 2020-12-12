@@ -40,7 +40,7 @@ jobs:
 
     # 安装Python模块
     - name: Install packages
-      run: sudo pip3 install requests selenium -H
+      run: sudo pip3 install requests selenium
       
     # 安装Chrome和chromedriver
     - name: Install Chrome
@@ -59,4 +59,4 @@ jobs:
       
     # 运行
     - name: Run
-      run: python3 autoreport.py ${{secrets.USERNAME}} ${{secrets.PASSWORD}} ${{secrets.SCKEY}}
+      run: sudo python3 autoreport.py ${{secrets.USERNAME}} ${{secrets.PASSWORD}} ${{secrets.SCKEY}}
