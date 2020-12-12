@@ -21,7 +21,7 @@ jobs:
 
     # 安装依赖
     - name: Install dependencies
-      run: sudo apt update && apt install wget curl unzip -y
+      run: sudo apt update && sudo apt install wget curl unzip -y
 
     # 设置服务器时区为东八区 
     - name: Set time zone
