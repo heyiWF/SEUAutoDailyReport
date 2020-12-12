@@ -4,7 +4,7 @@ name: daily-report
 on:
   
   push: # push触发
-    branches: [ main ]
+    branches: [ master ]
   workflow_dispatch: # 手动触发
   schedule: # 计划任务触发
     - cron: '1 22 * * *' 
@@ -21,11 +21,11 @@ jobs:
 
     # 安装依赖
     - name: Install dependencies
-      run: apt update && apt install wget curl unzip -y
+      run: sudo apt update && apt install wget curl unzip -y
 
     # 设置服务器时区为东八区 
     - name: Set time zone
-      run: timedatectl set-timezone 'Asia/Shanghai'
+      run: sudo timedatectl set-timezone 'Asia/Shanghai'
 
     # 检出
     - name: Checkout
@@ -40,7 +40,7 @@ jobs:
 
     # 安装Python模块
     - name: Install packages
-      run: pip3 install requests selenium
+      run: sudo pip3 install requests selenium
       
     # 安装Chrome和chromedriver
     - name: Install Chrome
@@ -49,7 +49,7 @@ jobs:
         sudo dpkg -i google-chrome-stable_current_amd64.deb --fix-missing; apt-get -fy install
         sudo rm -f google-chrome-stable_current_amd64.deb
         cd /bin && wget https://chromedriver.storage.googleapis.com/$(curl https://chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip && unzip chromedriver_linux64.zip
-        chmod +x /bin/chromedriver
+        sudo chmod +x /bin/chromedriver
        
     # 运行
     - name: Run test
