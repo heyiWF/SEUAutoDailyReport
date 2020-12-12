@@ -46,7 +46,7 @@ jobs:
     - name: Install Chrome
       run: 
         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-        sudo dpkg -i google-chrome-stable_current_amd64.deb --fix-missing; apt-get -fy install
+        sudo dpkg -i google-chrome-stable_current_amd64.deb
         sudo rm -f google-chrome-stable_current_amd64.deb
         cd /bin && wget https://chromedriver.storage.googleapis.com/$(curl https://chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip && unzip chromedriver_linux64.zip
         sudo chmod +x /bin/chromedriver
