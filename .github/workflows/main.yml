@@ -1,0 +1,60 @@
+name: daily-report
+
+
+on:
+  
+  push: # push触发
+    branches: [ main ]
+  workflow_dispatch: # 手动触发
+  schedule: # 计划任务触发
+    - cron: '1 22 * * *' 
+    # cron表达式，时区是UTC时间，比我们早8小时，要用我们的时间减去8小时后填上去，如上所表示的是每天23点5分
+    # 建议每个人都修改下时间！不要使用默认时间！最好不要设定在整点，错开峰值，避免大量G站同一个IP在相同时间去请求B站接口，导致IP被禁！
+    
+
+jobs:
+  run-bilibili-tool:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    # 安装依赖
+    - name: Install dependencies
+      run: apt update && apt install wget curl unzip -y
+
+    # 设置服务器时区为东八区 
+    - name: Set time zone
+      run: timedatectl set-timezone 'Asia/Shanghai'
+
+    # 检出
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    # Python 环境
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+        architecture: 'x64'
+
+    # 安装Python模块
+    - name: Install packages
+      run: pip3 install requests selenium
+      
+    # 安装Chrome和chromedriver
+    - name: Install Chrome
+      run: 
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo dpkg -i google-chrome-stable_current_amd64.deb --fix-missing; apt-get -fy install
+        sudo rm -f google-chrome-stable_current_amd64.deb
+        cd /bin && wget https://chromedriver.storage.googleapis.com/$(curl https://chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip && unzip chromedriver_linux64.zip
+        chmod +x /bin/chromedriver
+       
+    # 运行
+    - name: Run test
+      run: echo ${{secrets.USERNAME}} ${{secrets.PASSWORD}} ${{secrets.SCKEY}}
+      
+    # 运行
+    - name: Run
+      run: python3 autoreport.py ${{secrets.USERNAME}} ${{secrets.PASSWORD}} ${{secrets.SCKEY}}
