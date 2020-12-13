@@ -13,7 +13,7 @@ on:
     
 
 jobs:
-  run-bilibili-tool:
+  daily-report:
 
     runs-on: ubuntu-latest
 
@@ -59,4 +59,4 @@ jobs:
       
     # 运行
     - name: Run
-      run: python3 autoreport.py ${{secrets.USERNAME}} ${{secrets.PASSWORD}} ${{secrets.SCKEY}}
+      run: python3 autoreportAction.py ${{secrets.USERNAME}} ${{secrets.PASSWORD}} ${{secrets.SCKEY}}
