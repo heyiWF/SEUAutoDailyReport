@@ -12,7 +12,7 @@ _, username, password, sckey = argv
 
 def main():
     time.sleep(random.randint(0,300))
-    driver = webdriver.Chrome(chrome_options=chrome_options)
+    driver = webdriver.Chrome(options=chrome_options)
     #driver = webdriver.Chrome()
     driver.implicitly_wait("3")
     
@@ -35,7 +35,7 @@ def main():
         driver.find_element_by_xpath('//*[@id="username"]').send_keys(f"{username}")
         driver.find_element_by_xpath('//*[@id="password"]').send_keys(f"{password}")
         driver.find_element_by_xpath('//*[@id="casLoginForm"]/p[5]/button').click()
-    time.sleep(10)
+    time.sleep(30)
     
     checkUrl = driver.current_url
     if not checkUrl.startswith("http://ehall.seu.edu.cn/"):
@@ -47,7 +47,7 @@ def main():
     try:
         driver.find_element_by_xpath('/html/body/main/article/section/div[2]/div[1]').click()
         print("Clicked \'add\'")
-        time.sleep(10)
+        time.sleep(30)
         temp = round((36.4 + random.randint(0,4) / 10),1)
         driver.find_element_by_xpath('/html/body/div[11]/div/div[1]/section/div[2]/div/div[4]/div[2]/div[1]/div[1]/div/input').send_keys(str(temp))
         print("Input temperature. ")
