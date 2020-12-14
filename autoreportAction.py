@@ -64,10 +64,11 @@ def main():
         print("Operation failed. Please try again. ")
 
     # Send notification to WeChat
-    posturl = f'https://sc.ftqq.com/{sckey}.send'
-    d = {'text':subject, 'desp':msg}
-    r = requests.post(posturl,data=d)
-    print(r.text)
+    if not sckey == '':
+        posturl = f'https://sc.ftqq.com/{sckey}.send'
+        d = {'text':subject, 'desp':msg}
+        r = requests.post(posturl,data=d)
+        print(r.text)
     driver.quit()
 
 if __name__ == '__main__':
