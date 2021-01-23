@@ -11,6 +11,8 @@ from sys import argv
 _, username, password, sckey = argv
 
 def main():
+    global subject, msg
+    fail = False
     time.sleep(random.randint(0,300))
     driver = webdriver.Chrome(options=chrome_options)
     #driver = webdriver.Chrome()
@@ -59,18 +61,23 @@ def main():
         subject = 'Daily Report Succeeded'
         msg = 'Today\'s daily report has been successfully submitted. Temperature is: ' + str(temp)
     except Exception as e:
+        fail = True
         msg = 'Oops... Something went wrong. \n' + str(e)
         subject = 'Daily Report Failed'
         print("Operation failed. Please try again. ")
 
+    driver.quit()
+    return fail
+
+if __name__ == '__main__':
+    # Try twice before reporting a failure
+    if main():
+        main()
+    
     # Send notification to WeChat
     if not sckey == '':
         posturl = f'https://sc.ftqq.com/{sckey}.send'
         d = {'text':subject, 'desp':msg}
         r = requests.post(posturl,data=d)
         print(r.text)
-    driver.quit()
-
-if __name__ == '__main__':
-   main()
 
