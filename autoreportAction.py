@@ -14,7 +14,7 @@ def main():
     global subject, msg
     fail = False
     sleeping = random.randint(0,300)
-    print("Sleeping for " + sleeping + " seconds... ")
+    print("Sleeping for " + str(sleeping) + " seconds... ")
     time.sleep(sleeping)
     driver = webdriver.Chrome(options=chrome_options)
     #driver = webdriver.Chrome()
