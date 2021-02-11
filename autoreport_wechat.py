@@ -9,7 +9,9 @@ chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--no-sandbox')
 
 def main():
-    time.sleep(random.randint(0,300))
+    sleeping = random.randint(0,300)
+    print("Sleeping for " + sleeping + " seconds... ")
+    time.sleep(sleeping)
     #driver = webdriver.Firefox()
     driver = webdriver.Chrome(chrome_options=chrome_options)
     #driver = webdriver.Chrome()
