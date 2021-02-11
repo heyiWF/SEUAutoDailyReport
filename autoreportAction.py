@@ -13,7 +13,9 @@ _, username, password, sckey = argv
 def main():
     global subject, msg
     fail = False
-    time.sleep(random.randint(0,300))
+    sleeping = random.randint(0,300)
+    print("Sleeping for " + sleeping + " seconds... ")
+    time.sleep(sleeping)
     driver = webdriver.Chrome(options=chrome_options)
     #driver = webdriver.Chrome()
     driver.implicitly_wait("3")
