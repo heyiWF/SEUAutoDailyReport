@@ -8,7 +8,7 @@ import random
 
 def main():
     sleeping = random.randint(0,300)
-    print("Sleeping for " + sleeping + " seconds... ")
+    print("Sleeping for " + str(sleeping) + " seconds... ")
     time.sleep(sleeping)
     #driver = webdriver.Firefox()
     driver = webdriver.Chrome(chrome_options=chrome_options)
