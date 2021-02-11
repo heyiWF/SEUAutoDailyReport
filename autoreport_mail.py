@@ -11,7 +11,7 @@ from selenium import webdriver
 
 def main():
     sleeping = random.randint(0,300)
-    print("Sleeping for " + sleeping + " seconds... ")
+    print("Sleeping for " + str(sleeping) + " seconds... ")
     time.sleep(sleeping)
     mail_host="smtp.qq.com"
     mail_user="YourEmail@qq.com"
