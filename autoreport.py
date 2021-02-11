@@ -3,7 +3,9 @@ import time
 import random
 
 def main():
-    time.sleep(random.randint(0,300))
+    sleeping = random.randint(0,300)
+    print("Sleeping for " + sleeping + " seconds... ")
+    time.sleep(sleeping)
     #driver = webdriver.Firefox()
     driver = webdriver.Chrome()
     #driver.maximize_window()
