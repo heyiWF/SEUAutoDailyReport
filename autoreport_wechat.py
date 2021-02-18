@@ -13,7 +13,7 @@ def main():
     print("Sleeping for " + str(sleeping) + " seconds... ")
     time.sleep(sleeping)
     #driver = webdriver.Firefox()
-    driver = webdriver.Chrome(chrome_options=chrome_options)
+    driver = webdriver.Chrome(options=chrome_options)
     #driver = webdriver.Chrome()
     #driver.maximize_window()
     driver.implicitly_wait("3")
