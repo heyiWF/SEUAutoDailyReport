@@ -19,7 +19,7 @@ def main():
     sender = 'YourEmail@qq.com' # Must be the same as mail_user
     receivers = ['YourEmail@qq.com'] # The email address you want to receive the result
     driver = webdriver.Firefox()
-    #driver = webdriver.Chrome(chrome_options=chrome_options)
+    #driver = webdriver.Chrome(options=chrome_options)
     #driver = webdriver.Chrome()
     #driver.maximize_window()
     driver.implicitly_wait("3")
