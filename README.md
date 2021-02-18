@@ -2,9 +2,9 @@
 
 ## Changelog
 
-02/18/2021：更新被弃用的 webdriver 参数。
+02/18/2021：更新被弃用的 webdriver 参数；微信即将下线公众号模板消息，Server酱 改为使用企业微信推送通道。
 
-02/11/2021：新春快乐！更新输出sleep时间，不然总是以为程序卡住了。
+02/11/2021：新春快乐！更新输出 sleep 时间，不然总是以为程序卡住了。
 
 01/23/2021：假期愉快！更新配置 Github Actions 教程，更新脚本第一次失败后再试一次，（希望）解决由于种种原因 GitHub 服务器与学校系统连接出错而失败但手动重新运行一次又能成功的问题。
 
@@ -34,15 +34,15 @@
 
 
 
-## `autoreport_wechat` 由 Server酱 提供支持
+## `autoreport_wechat` 由 Server酱·Turbo版 提供支持
 
-1. 用 GitHub 账号，登入http://sc.ftqq.com/
+1. 微信扫码登录 https://sct.ftqq.com/
 
-2. 在**微信推送**页面，扫描二维码绑定你的微信。
+2. 跟随**消息通道**页面的指引，注册并填写你自己企业微信账号相关信息，或使用客户端推送等其他渠道。
 
-3. 在**发送消息**页面，你会得到你自己的 SCKEY，请妥善保管。
+3. 在**SendKey**页面，你会得到你自己的 SendKey，请妥善保管。
 
-4. 在`autoreport_wechat.py`中，把`posturl`中的`SCKEY`替换为你在上一步中获得的 SCKEY。
+4. 在`autoreport_wechat.py`中，把`posturl`中的`SendKey`替换为你在上一步中获得的 SendKey 即可实现消息推送。
 
 
 
