@@ -66,8 +66,8 @@ def main():
         print("Operation failed. Please try again. ")
     
     # Send notification to WeChat
-    posturl = 'https://sc.ftqq.com/SCKEY.send' # Replace 'SCKEY' with your own SCKEY
-    d = {'text':subject, 'desp':msg}
+    posturl = 'https://sctapi.ftqq.com/SendKey.send' # Replace 'SendKey' with your own SendKey
+    d = {'title':subject, 'desp':msg}
     r = requests.post(posturl,data=d)
     print(r.text)
     driver.quit()
