@@ -11,7 +11,7 @@ chrome_options.add_argument('--no-sandbox')
 def sendMsg():
     global subject, msg
     # Send notification to WeChat
-    posturl = 'https://sctapi.ftqq.com/SCT9008T0vFefeAQZMhRdY71uDCAYHpN.send'
+    posturl = 'https://sctapi.ftqq.com/SCKEY.send'
     d = {'title':subject, 'desp':msg}
     r = requests.post(posturl,data=d)
     print(r.text)
