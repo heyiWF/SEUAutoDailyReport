@@ -8,14 +8,30 @@ chrome_options.add_argument('--headless')
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--no-sandbox')
 
+def sendMsg():
+    global subject, msg
+    # Send notification to WeChat
+    posturl = 'https://sctapi.ftqq.com/SCT9008T0vFefeAQZMhRdY71uDCAYHpN.send'
+    d = {'title':subject, 'desp':msg}
+    r = requests.post(posturl,data=d)
+    print(r.text)
+
 def main():
+    global subject, msg
     sleeping = random.randint(0,300)
     print("Sleeping for " + str(sleeping) + " seconds... ")
     time.sleep(sleeping)
-    #driver = webdriver.Firefox()
-    driver = webdriver.Chrome(options=chrome_options)
-    #driver = webdriver.Chrome()
-    #driver.maximize_window()
+    try:
+        #driver = webdriver.Firefox()
+        driver = webdriver.Chrome(options=chrome_options)
+        #driver = webdriver.Chrome()
+        #driver.maximize_window()
+    except Exception as e:
+        msg = "The version of webdriver installed doesn't match your browser. \n\n" + str(e)
+        subject = 'Daily Report Failed'
+        print("Operation failed. The version of webdriver doesn't match. ")
+        sendMsg()
+        return
     driver.implicitly_wait("3")
     
     '''
@@ -65,11 +81,7 @@ def main():
         subject = 'Daily Report Failed'
         print("Operation failed. Please try again. ")
     
-    # Send notification to WeChat
-    posturl = 'https://sctapi.ftqq.com/SendKey.send' # Replace 'SendKey' with your own SendKey
-    d = {'title':subject, 'desp':msg}
-    r = requests.post(posturl,data=d)
-    print(r.text)
+    sendMsg()
     driver.quit()
 
 if __name__ == '__main__':
