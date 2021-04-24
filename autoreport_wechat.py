@@ -72,7 +72,7 @@ def main():
         driver.find_element_by_xpath('//*[@id="save"]').click()
         print("Clicked \'save\'")
         time.sleep(3)
-        driver.find_element_by_xpath('/html/body/div[60]/div[1]/div[1]/div[2]/div[2]/a[1]').click()
+        driver.find_element_by_xpath('/html/body/div[61]/div[1]/div[1]/div[2]/div[2]/a[1]').click()
         print("All done!!")
         msg = 'Today\'s daily report has been successfully submitted. \n\nTemperature is: ' + str(temp)
         subject = 'Daily Report Succeeded'
