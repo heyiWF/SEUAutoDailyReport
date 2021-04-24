@@ -44,7 +44,7 @@ def main():
         driver.find_element_by_xpath('/html/body/div[11]/div/div[1]/section/div[2]/div/div[4]/div[2]/div[1]/div[1]/div/input').send_keys("36.7")
         driver.find_element_by_xpath('//*[@id="save"]').click()
         time.sleep(5)
-        driver.find_element_by_xpath('/html/body/div[60]/div[1]/div[1]/div[2]/div[2]/a[1]').click()
+        driver.find_element_by_xpath('/html/body/div[61]/div[1]/div[1]/div[2]/div[2]/a[1]').click()
     except Exception:
         print("Operation failed. Please try again. ")
     
