@@ -7,6 +7,7 @@ chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--incognito')
 
 def sendMsg():
     global subject, msg
@@ -22,13 +23,10 @@ def main():
     print("Sleeping for " + str(sleeping) + " seconds... ")
     time.sleep(sleeping)
     try:
-        #driver = webdriver.Firefox()
         driver = webdriver.Chrome(options=chrome_options)
-        #driver = webdriver.Chrome()
-        #driver.maximize_window()
     except Exception as e:
         msg = "The version of webdriver installed doesn't match your browser. \n\n" + str(e)
-        subject = 'Daily Report Failed'
+        subject = 'Daily Report ❌'
         print("Operation failed. The version of webdriver doesn't match. ")
         sendMsg()
         return
@@ -43,7 +41,15 @@ def main():
     *********************************
     '''
     url="http://ehall.seu.edu.cn/qljfwapp2/sys/lwReportEpidemicSeu/index.do?t_s=1583641506865#/dailyReport"
-    driver.get(url)
+    try:
+        driver.get(url)
+    except WebDriverException:
+        msg = "Unknown WebDriverException"
+        subject = 'Daily Report ❌'
+        print("WebDriverException")
+        sendMsg()
+        driver.quit()
+        return
     
     checkUrl = driver.current_url
     # Check if you are already logged in
@@ -75,10 +81,10 @@ def main():
         driver.find_element_by_xpath('/html/body/div[62]/div[1]/div[1]/div[2]/div[2]/a[1]').click()
         print("All done!!")
         msg = 'Today\'s daily report has been successfully submitted. \n\nTemperature is: ' + str(temp)
-        subject = 'Daily Report Succeeded'
+        subject = 'Daily Report ✅'
     except Exception as e:
         msg = 'Oops... Something went wrong. \n\n' + str(e)
-        subject = 'Daily Report Failed'
+        subject = 'Daily Report ❌'
         print("Operation failed. Please try again. ")
     
     sendMsg()
@@ -86,4 +92,3 @@ def main():
 
 if __name__ == '__main__':
    main()
-
