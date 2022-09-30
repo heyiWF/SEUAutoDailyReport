@@ -28,7 +28,7 @@ def main():
         driver = webdriver.Chrome(options=chrome_options)
     except Exception as e:
         msg = "The version of webdriver installed doesn't match your browser. \n\n" + str(e)
-        subject = 'Daily Report ❌'
+        subject = "Daily Report ❌"
         print("Operation failed. The version of webdriver doesn't match. ")
         print(str(e))
         sendMsg()
@@ -47,6 +47,8 @@ def main():
     try:
         driver.get(url)
     except WebDriverException:
+        msg = "Webdriver exception occurred: " + str(e)
+        subject = "Daily Report ❌"
         print("Unknown WebDriverException!")
         driver.quit()
         return
@@ -65,9 +67,11 @@ def main():
     checkUrl = driver.current_url
     if not checkUrl.startswith("http://ehall.seu.edu.cn/"):
         print("Login failed. ")
+        msg = "Failed to sign in. "
+        subject = "Daily Report ❌"
         driver.quit()
         return
-   
+
     print("Successfully logged in. ") 
     try:
         driver.find_element(By.XPATH, '/html/body/main/article/section/div[2]/div[1]').click()
@@ -85,8 +89,8 @@ def main():
         subject = 'Daily Report ✅'
     except Exception as e:
         fail = True
-        msg = 'Oops... Something went wrong. \n\n' + str(e)
-        subject = 'Daily Report ❌'
+        msg = "Oops... Something went wrong. \n\n" + str(e)
+        subject = "Daily Report ❌"
         print("Operation failed. Please try again. ")
     
     print(msg)
